@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PolcodeProduct</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ polcodeProduct.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ polcodeProduct.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ polcodeProduct.description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ polcodeProduct.price }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ polcodeProduct.slug }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if polcodeProduct.created %}{{ polcodeProduct.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if polcodeProduct.updated %}{{ polcodeProduct.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Contentchanged</th>
+                <td>{% if polcodeProduct.contentChanged %}{{ polcodeProduct.contentChanged|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

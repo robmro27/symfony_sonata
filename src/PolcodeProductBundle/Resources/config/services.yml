@@ -1,0 +1,12 @@
+services:
+    polcode_product.admin.polcode_category:
+        class: PolcodeProductBundle\Admin\PolcodeCategoryAdmin
+        arguments: [~, PolcodeProductBundle\Entity\PolcodeCategory, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Polcode, label: PolcodeCategory }
+
+    polcode_product.admin.polcode_product:
+        class: PolcodeProductBundle\Admin\PolcodeProductAdmin
+        arguments: [~, PolcodeProductBundle\Entity\PolcodeProduct, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Polcode, label: PolcodeProduct }

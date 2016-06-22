@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PolcodeProduct list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Slug</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Contentchanged</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for polcodeProduct in polcodeProducts %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': polcodeProduct.id }) }}">{{ polcodeProduct.id }}</a></td>
+                <td>{{ polcodeProduct.name }}</td>
+                <td>{{ polcodeProduct.description }}</td>
+                <td>{{ polcodeProduct.price }}</td>
+                <td>{{ polcodeProduct.slug }}</td>
+                <td>{% if polcodeProduct.created %}{{ polcodeProduct.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if polcodeProduct.updated %}{{ polcodeProduct.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if polcodeProduct.contentChanged %}{{ polcodeProduct.contentChanged|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': polcodeProduct.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
