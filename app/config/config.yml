@@ -97,6 +97,13 @@ knp_menu:
     # the renderer to use, list is also available by default
     default_renderer: twig
     
+sonata_admin:    
+    title: Company Name
+    title_logo: bundles/app/images/logo-sample.png
+    show_mosaic_button:   true
+    options:
+        lock_protection: true
+    
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -106,6 +113,8 @@ sonata_block:
         sonata.user.block.menu:    # used to display the menu in profile pages
         sonata.user.block.account: # used to display menu option (login option)
         sonata.block.service.text: # used to if you plan to use Sonata user routes
+        sonata.admin.block.search_result:
+            contexts: [admin]
             
 sonata_user:
     security_acl: true
