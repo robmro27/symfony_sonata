@@ -4,6 +4,7 @@ namespace PolcodeProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
 
 /**
  * PolcodeProduct
@@ -13,6 +14,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class PolcodeProduct
 {
+    
+    use \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+    
     /**
      * @var int
      *
@@ -22,19 +26,12 @@ class PolcodeProduct
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
+    protected $translations;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
+    public function __contruct()
+    {
+        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * @var string
@@ -54,53 +51,7 @@ class PolcodeProduct
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return PolcodeProduct
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return PolcodeProduct
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+    
 
     /**
      * Set price
@@ -156,37 +107,6 @@ class PolcodeProduct
     {
         return $this->category;
     }
-    
-    /**
-     * @Gedmo\Slug(fields={"name"})
-     * @ORM\Column(length=128, unique=true)
-     */
-    private $slug;
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return PolcodeProduct
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-    
     
     
     /**

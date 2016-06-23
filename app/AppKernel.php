@@ -35,6 +35,10 @@ class AppKernel extends Kernel
             
             // DOCTRINE EXTENSION
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            
+            // TRANSLATIONS
+            new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

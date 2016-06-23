@@ -24,7 +24,9 @@
         "sonata-project/user-bundle": "^3.0",
         "friendsofsymfony/rest-bundle": "^1.7",
         "nelmio/api-doc-bundle": "^2.13",
-        "stof/doctrine-extensions-bundle": "^1.2"
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "a2lix/i18n-doctrine-bundle": "^0.1.0",
+        "a2lix/translation-form-bundle": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

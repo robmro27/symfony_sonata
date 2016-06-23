@@ -2,6 +2,8 @@ polcode_product:
     resource: "@PolcodeProductBundle/Controller/"
     type:     annotation
     prefix:   /
+    requirements:
+        _locale: fr|en|de|pl
 
 admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"

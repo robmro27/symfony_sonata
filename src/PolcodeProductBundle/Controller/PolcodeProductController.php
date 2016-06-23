@@ -6,6 +6,7 @@ namespace PolcodeProductBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use PolcodeProductBundle\Entity\PolcodeProduct;
 
 /**
@@ -19,6 +20,7 @@ class PolcodeProductController extends Controller
      * Lists all PolcodeProduct entities.
      *
      * @Route("/", name="product_index")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @Method("GET")
      */
     public function indexAction()
@@ -32,6 +34,22 @@ class PolcodeProductController extends Controller
         ));
     }
 
+    /**
+     * Finds and displays a PolcodeProduct entity.
+     *
+     * @Route("/{id}", name="product_show",requirements={"id": "\d+"})
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @Method("GET")
+     */
+    public function showAction(PolcodeProduct $polcodeProduct)
+    {
+
+        return $this->render('polcodeproduct/show.html.twig', array(
+            'polcodeProduct' => $polcodeProduct,
+        ));
+    }
+    
+    
     /**
      * Finds and displays a PolcodeProduct entity by its slug.
      *
@@ -51,19 +69,6 @@ class PolcodeProductController extends Controller
     }
     
     
-    /**
-     * Finds and displays a PolcodeProduct entity.
-     *
-     * @Route("/show/{id}", name="product_show")
-     * @Method("GET")
-     */
-    public function showAction(PolcodeProduct $polcodeProduct)
-    {
-
-        return $this->render('polcodeproduct/show.html.twig', array(
-            'polcodeProduct' => $polcodeProduct,
-        ));
-    }
     
     
     

@@ -59,8 +59,17 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        #naming_strategy: doctrine.orm.naming_strategy.underscore
+        #auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                # New custom filter
+                filters:
+                    oneLocale:
+                        class: A2lix\I18nDoctrineBundle\Doctrine\ORM\Filter\OneLocaleFilter
+                        enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -128,3 +137,14 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sluggable: true
+            
+a2lix_i18n_doctrine:
+    manager_registry: doctrine
+    
+a2lix_translation_form:
+    locale_provider: default       
+    locales: [fr, en, de, pl]          
+    default_locale: en             
+    required_locales: [en, pl]        
+    manager_registry: doctrine     
+    templating: "A2lixTranslationFormBundle::default.html.twig"    

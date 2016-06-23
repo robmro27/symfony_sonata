@@ -17,8 +17,8 @@ class PolcodeProductAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('description')
+            ->add('translations.name')
+            ->add('translations.description')
             ->add('price')
         ;
     }
@@ -29,8 +29,9 @@ class PolcodeProductAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
-            ->add('description')
+            ->add('translation.name')
+            ->add('translation.description')
+            ->add('locale', null, ['label' => 'Current Locale'])
             ->add('price')
             ->add('_action', null, array(
                 'actions' => array(
@@ -47,14 +48,34 @@ class PolcodeProductAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        
         $formMapper
-            ->add('name')
-            ->add('description')
+//            ->add('name')
+//            ->add('description')
             ->add('price')
             ->add('category', 'sonata_type_model', array(
                 'class' => 'PolcodeProductBundle\Entity\PolcodeCategory',
                 'property' => 'name',
             ))
+            ->add('translations', 'a2lix_translations', array(
+            'fields' => array(                      // [optional] Manual configuration of fields to display and options. If not specified, all translatable fields will be display, and options will be auto-detected
+                'name' => array(
+                    'label' => 'Name',              // [optional] Custom label. Ucfirst, otherwise
+                    'field_type' => 'text',           // [optional] Custom type
+                    'trim' => true,
+                    'required' => true
+                ),
+                'slug' => array(
+                    'label' => 'Slug (Leave empty for auto update)',              // [optional] Custom label. Ucfirst, otherwise
+                    'field_type' => 'text',           // [optional] Custom type
+                    'trim' => true,
+                    'required' => false,
+                ), 
+                'description' => array(
+                    'label' => 'Description',              // [optional] Custom label. Ucfirst, otherwise
+                    'field_type' => 'textarea',           // [optional] Custom type
+                    'required' => true,
+                ))));
         ;
     }
 
@@ -66,7 +87,8 @@ class PolcodeProductAdmin extends AbstractAdmin
         $showMapper
             ->add('name')
             ->add('description')
-            ->add('price')
+            ->add('locale')
+            ->add('price');
         ;
     }
     
