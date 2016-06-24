@@ -10,4 +10,21 @@ namespace PolcodeProductBundle\Repository;
  */
 class PolcodeProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    /**
+     * Find product by translated slug field
+     * @param type $slug
+     * @return type
+     */
+    public function findOneBySlug($slug)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p, t')
+            ->join('p.translations', 't')
+            ->where('t.slug = :slug')
+            ->setParameter('slug', $slug);
+
+        return $qb->getQuery()->getSingleResult();
+    }
+    
 }

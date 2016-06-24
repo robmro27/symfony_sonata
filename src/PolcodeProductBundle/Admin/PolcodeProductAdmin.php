@@ -37,7 +37,7 @@ class PolcodeProductAdmin extends AbstractAdmin
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
-                    'delete' => array(),
+                    'delete' => array('template' => 'PolcodeProductBundle:CRUD:list__action_delete.html.twig'),
                 )
             ))
         ;

@@ -18,7 +18,7 @@ class ProductCRUDController extends Controller
     public function deleteAction($id)
     {
         
-        $this->denyAccessUnlessGranted('ROLE_SUPERADMIN', null, 'Unable to access this page!');
+        $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN', null, 'Unable to access this page!');
         
         return parent::deleteAction($id);
     }

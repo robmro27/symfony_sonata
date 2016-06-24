@@ -54,6 +54,7 @@ class PolcodeProductController extends Controller
      * Finds and displays a PolcodeProduct entity by its slug.
      *
      * @Route("/{slug}", name="product_show_by_slug")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @Method("GET")
      */
     public function showBySlugAction( $slug ) 
