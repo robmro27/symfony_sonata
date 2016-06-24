@@ -15,6 +15,6 @@ services:
             
     app.menu_builder:
         class: PolcodeProductBundle\Menu\MenuBuilder
-        arguments: ["@knp_menu.factory","@doctrine.orm.entity_manager"]
+        arguments: ["@knp_menu.factory","@doctrine.orm.entity_manager", '@security.authorization_checker']
         tags:
             - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }

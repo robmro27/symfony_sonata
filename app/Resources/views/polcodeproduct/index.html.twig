@@ -3,7 +3,7 @@
 {% block body %}
     <h1>PolcodeProduct list</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -29,11 +29,7 @@
                 <td>{% if polcodeProduct.updated %}{{ polcodeProduct.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if polcodeProduct.contentChanged %}{{ polcodeProduct.contentChanged|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('product_show', { 'id': polcodeProduct.id }) }}">show</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-success" href="{{ path('product_show', { 'id': polcodeProduct.id }) }}">show</a> 
                 </td>
             </tr>
         {% endfor %}

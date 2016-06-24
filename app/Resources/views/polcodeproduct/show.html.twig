@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>PolcodeProduct</h1>
+    <h1>Polcode Product</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -40,9 +40,6 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a class="btn btn-success" href="{{ path('product_index') }}">Back to the list</a>
+       
 {% endblock %}
